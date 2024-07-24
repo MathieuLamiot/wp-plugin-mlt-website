@@ -3,5 +3,6 @@
 defined( 'ABSPATH' ) || exit;
 
 return [
-	\MLTWebsiteMUPlugin\ServiceProvider::class,
+    \MLTWebsiteMUPlugin\CV\ServiceProvider::class,
+	\MLTWebsiteMUPlugin\Talks\ServiceProvider::class,
 ];
