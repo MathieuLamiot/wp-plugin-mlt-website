@@ -1,0 +1,30 @@
+name: Deploy plugin to OVH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: '8.0'
+
+        - name: Install Composer dependencies
+          run: composer install
+
+        - name: Deploy to OVH via FTP
+          uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+          with:
+            server: ${{ secrets.FTP_SERVER }}
+            username: ${{ secrets.FTP_USERNAME }}
+            password: ${{ secrets.FTP_PASSWORD }}
+            server-dir: '/www/wp-content/plugins/wp-plugin-mlt-website/'

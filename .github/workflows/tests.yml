@@ -3,10 +3,7 @@ name: Unit/Integration tests
 on:
   pull_request:
     branches:
-      - trunk
-      - develop
-      - branch-*
-      - feature/*
+      - main
 
 jobs:
   run:
